@@ -1,43 +1,43 @@
 /** @format */
 
-let studentHogwarts = (function () {
-  let privateScore = 0;
-  let name = null;
-
-  function changeScoreBy(points) {
-    privateScore += points;
+class studentHogwarts {
+  constructor(privateScore = 0, name = null) {
+    this.privateScore = privateScore;
+    this.name = name;
   }
 
-  return {
-    setName: function (newName) {
-      name = newName;
-    },
-    rewardStudent: function () {
-      changeScoreBy(1);
-    },
-    penalizeStudent: function () {
-      changeScoreBy(-1);
-    },
-    getScore: function () {
-      return name + ": " + privateScore;
-    },
-  };
-})();
+  changeScoreBy(points) {
+    this.privateScore += points;
+  }
 
-// Harry's instance
-let harry = Object.create(studentHogwarts);
-harry.setName("Harry");
-harry.rewardStudent();
-harry.rewardStudent();
-harry.rewardStudent();
-harry.rewardStudent();
-console.log(harry.getScore()); // Output: Harry: 4
+  setName(newName) {
+    this.name = newName;
+  }
 
-// Draco's instance
-let draco = Object.create(studentHogwarts);
-draco.setName("Draco");
-draco.rewardStudent();
+  rewardStudent() {
+    this.changeScoreBy(1);
+  }
+
+  penalizeStudent() {
+    this.changeScoreBy(-1);
+  }
+
+  getScore() {
+    return `${this.name}: ${this.privateScore}`;
+  }
+}
+
+let harry = new studentHogwarts(0, "Harry");
+harry.rewardStudent();
+harry.rewardStudent();
+harry.rewardStudent();
+harry.rewardStudent();
+
+console.log(harry.getScore());
+
+let draco = new studentHogwarts(0, "Draco");
+draco.rewardStudent(1);
 draco.penalizeStudent();
 draco.penalizeStudent();
 draco.penalizeStudent();
-console.log(draco.getScore()); // Output: Draco: -2
+console.log(draco.getScore());
