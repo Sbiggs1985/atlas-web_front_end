@@ -1,7 +1,23 @@
 <!-- @format -->
 
-The tasks I have been given are aimed at practicing lexical scoping in javaScript.
+<h1>JavaScript advanced</h1>
+<br>
+<h2>Resources</h2>
+<ul>
+    <li>Lexical scope</li>
+    <li>Closure</li>
+    <li>Call stack</li>
+    <li>Binding</li>
+    <li>Callbacls</li>
+</ul>
+<hr>
 
-Lexical scoping refers to how variable names are resolved in nested functions.
-
-In javaScript, functions create their own scope, and they can access variables declared in their parent scope.
+<h2>Learning Objectives</h2>
+<ul>What is lexical scoping in JavaScript</ul>
+<ul>What is closure in JavaScript</ul>
+<ul>How to use closure</ul>
+<ul>How to chain different closures</ul>
+<ul>How to simulate private methods with Closure</ul>
+<ul>The execution stack order with JavaScript</ul>
+<ul>How to use binding</ul>
+<ul>How to use callbacks</ul>
