@@ -15,11 +15,8 @@ function outer() {
     function inception() {
       alert(globalVariable + " " + course + exclamation);
     }
-
     inception();
   }
-
   inner();
 }
-
 outer();
