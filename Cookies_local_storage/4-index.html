@@ -1,1 +1,74 @@
+<!-- @format -->
 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Basic Cookie</title>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1"></script>
+    <script defer>
+      function setCookiesAndShowWelcomeMessageOrForm() {
+        const firstNameValue = document.getElementById("firstname").value;
+        const emailValue = document.getElementById("email").value;
+
+        const expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 10);
+
+        Cookies.set("firstname", firstNameValue, { expires: expirationDate });
+        Cookies.set("email", emailValue, { expires: expirationDate });
+
+        showWelcomeMessageOrForm();
+      }
+
+      function showWelcomeMessageOrForm() {
+        var firstName = Cookies.get("firstname");
+        if (firstName) {
+          showWelcomeMessage(firstName);
+        } else {
+          showForm();
+        }
+      }
+
+      function showWelcomeMessage(firstName) {
+        var welcomeMessage = document.createElement("h1");
+        welcomeMessage.textContent = `Welcome ${firstName} `;
+        var logoutLink = document.createElement("a");
+        logoutLink.textContent = "(logout)";
+        logoutLink.style.fontStyle = "italic";
+        logoutLink.style.marginLeft = "10px";
+        logoutLink.href = "#";
+        logoutLink.onclick = deleteCookiesAndShowForm;
+        welcomeMessage.appendChild(logoutLink);
+
+        document.body.innerHTML = "";
+        document.body.appendChild(welcomeMessage);
+      }
+
+      function deleteCookiesAndShowForm() {
+        Cookies.remove("firstname");
+        Cookies.remove("email");
+        showForm();
+      }
+
+      function showForm() {
+        var welcomeMessage = document.getElementById("welcomeMessage");
+        if (welcomeMessage) {
+          welcomeMessage.parentNode.removeChild(welcomeMessage);
+        }
+        var loginForm = document.getElementById("loginForm");
+        if (loginForm) {
+          loginForm.style.display = "block";
+        }
+      }
+
+      function hideForm() {
+        var loginForm = document.getElementById("loginForm");
+        if (loginForm) {
+          loginForm.style.display = "none";
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
